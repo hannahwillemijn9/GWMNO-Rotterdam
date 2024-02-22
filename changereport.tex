@@ -1,0 +1,80 @@
+ \documentclass{tudelft-report}
+
+%% Set up the bibliography
+\usepackage{biblatex}
+\addbibresource{report.bib}
+
+%% Additional packages and commands
+\setlist{itemsep=-2pt} % Reducing white space in lists slightly
+\renewcommand{\deg}{\si{\degree}\xspace} % Use \deg easily, everywhere
+\usepackage{xcolor}
+
+%% ----------------------------------------------------------------------
+%%    Begin of document + Frontmatter (Roman page numbering)
+%% ----------------------------------------------------------------------
+
+\begin{document}
+
+\frontmatter
+
+%% Define the main parameters
+\title{Rotterdam's Groundwater Monitoring Network}
+\subtitle{A Critical Examination of the\\Groundwater Monitoring Network \\and its Optimization Potential}
+%\title{Enhancing the Groundwater Monitoring Network of Rotterdam through Machine Learning}
+%\title{Determining Optimization of Rotterdam's Groundwater Water Monitoring Network using Machine Learning }
+\author{H.W. Elzinga}
+
+\subject{Master Thesis} % Cover only
+\affiliation{RU, UDE} % Cover only
+\coverimage{figures/coveru.jpeg} % Aspect ratio of 2:3 (portrait) recommended
+\definecolor{title}{HTML}{4884d6} % Color for cover title
+
+\makecover
+\input{frontmatter/title-report}
+\input{frontmatter/preface}
+\input{frontmatter/summary}
+
+\tableofcontents
+%\listoffigures
+%\listoftables
+
+\input{frontmatter/nomenclature}
+
+%% ----------------------------------------------------------------------
+%%    Mainmatter (Arabic page numbering)
+%% ----------------------------------------------------------------------
+
+\mainmatter
+
+\input{frontmatter/mainmatter/intro}
+\input{frontmatter/mainmatter/chapter-2}
+\input{frontmatter/mainmatter/chapter-3}
+\input{frontmatter/mainmatter/chpt4}
+\input{frontmatter/mainmatter/chapter-5}
+\input{frontmatter/mainmatter/chapter-6}
+\input{frontmatter/mainmatter/conclusion}
+
+\input{frontmatter/mainmatter/recommendations}
+
+%% Prevent urls running into margins in bibliography
+\setcounter{biburlnumpenalty}{7000}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{7000}
+
+%% Add bibliography
+\printbibliography[heading=bibintoc,title=References]
+%\bibliography{plain}
+%\bibilography{myreferences}
+
+%% ----------------------------------------------------------------------
+%%    Appendix (Letters for chapters)
+%% ----------------------------------------------------------------------
+
+\appendix
+
+\input{appendix/appendix-a}
+\input{appendix/appendix-b}
+\input{appendix/appendix-c}
+
+
+\end{document}
