@@ -173,6 +173,11 @@
         \node[above right=10mm] at (current page.south west) {%
             \includegraphics[width=0.50\linewidth]{figures/logotransru.png}};
 
+        %% Add the logo in the bottom right
+        \node[above left=25mm] at (current page.south east) {%
+            \includegraphics[width=0.50\linewidth]{figures/logoGR.png}};
+
+
         %% Add the banner with the title, subtitle, subject and author(s)
         \node[below=2cm,fill=White!0,minimum width={\paperwidth},inner ysep=25pt,opacity=10,text opacity=1] at (current page.north) {%
             \begin{minipage}{0.9\paperwidth}

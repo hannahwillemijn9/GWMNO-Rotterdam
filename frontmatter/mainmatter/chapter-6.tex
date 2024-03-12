@@ -1,70 +1,36 @@
-\chapter{Discussion}
+\chapter{                                                                                                       Discussion}
 \label{chapter:discussion}
+%\emph{The discussion first explains a brief summary of the results of the methodology, the results are further interpreted. The main question is: What do the results mean in the context of GWMNO and why do these results matter for the research study? Besides the interpretation and implications of the research study, the limitations also have to be addressed. It is of additional relevance to have the limitations of the research study clear.}\\
+\\
+\textbf{Observed data}\\
+\\
+The substantiation for the time period of the observed data, ranging from 2010-2024 to a more narrow scope of 2020-2024, could potentially affect the precision and reliability of the results of the stress model. A wider time frame may provide a better view of the groundwater dynamics and anomalies, referring to the outliers observed in the observed, manual measurements between 2014 and 2018. Nevertheless, an extended time period might introduce the variability that does not improve model performance. A shorter time frame, however, might not capture the entire range of hydrological events that are necessary to create a robust model. On the other hand, a longer time frame can positively influence the results, but they have to take into account the effects of external factors such as spatial planning of public spaces or inefficient sewage systems that could influence the variability of the data.    \\
+\\
 
-\emph{TO WRITE}
+\textbf{Data preparation}\\
+\\
+Since a combination of dataloggers and a manual collection method is applied for many neighborhoods in the municipality, data gaps were identified. Time series modeling appeared to be an effective approach for bridging data gaps with dependable data. The Pastas time series modeling approach is based on simulation data of precipitation [m/day] and potential evaporation [m/day] data, in order to calculate recharge [m/day], of weather station 344 in Rotterdam, The Netherlands. Weather station 344 is the station that is commonly used to retrieve data for the municipality. However, as the crow flies, both Rozenburg and Heijplaat have a distance of maximum 15 kilometers from the weather station.
+
+\textbf{QR factorization}\\
+\\
+The process of QR factorization and the additional reduction of monitoring wells introduces the relationship between the number of monitoring wells and the value of the metric RMSE. A general observation is made that a high level of optimization is characterized by a low RMSE, unlike assumptions that a low reduction rate corresponds to a high RMSE and so a high level of optimization when looking at data quantity. The RMSE could be closely related to the quality of the data and the selection process of the monitoring wells instead to data quantity. \\
+\\
+\textbf{Sensitivity analysis and performance metrics}\\
+\\
+It is necessary to question whether the RMSE and MAE are the only sensitive parameters that reflect the model accuracy. The RMSE describes a measure of the magnitude of errors and it remains unaffected by changes in the variability of the input data (the observed groundwater level data). The MAE, on the other hand, is influenced by the variability. Monitoring wells with a lower variability are likely to have less informational relevance to the network and are more likely to be eliminated. \\
+\\
+\textbf{Implications of reduction rates}\\
+\\
+Regarding the ideal network reduction rate, by reducing the network with more than 20\%, the remaining network is classified as impractical. Nevertheless, when the reduction rate reaches 25\%, monitoring wells with the lowest information content are identified and eliminated from the network. With a reduction rate of 25\%, the network is polished, but this did not influence the prediction accuracy. In the research study, selective elimination takes place based on a hierarchical list, which results in a lower loss of prediction accuracy of reconstruction accuracy of the eliminated monitoring wells. \\
+\\
+\textbf{Model robustness and variability}\\
+\\
+The RMSE remains unchanged when increasing or decreasing the variability of the input data. This might suggest that the model performance is consistent, the robustness to changes in variability is relatively high. Determining the robustness is necessary to examine whether the model is able to remain consistent when experiencing a variability of hydrological conditions and input scenarios. \\
+\newline
+Overall, the elimination of monitoring wells and the choice of study period require an equilibrium regarding data quality and quantity.  Both the RMSE and MAE are performance metrics that can evaluate model performance, because they ensure perspective in model sensitivity and performance. It has become clear that the RMSE is not sensitive to changes in variability input. At the same time, the direct influence of the MAE on the results marks the complexity of GWMNO. \\
+\\
+\textbf{Implementation of the model in the field}\\
+\\
+Before the research study started, the objective was set to create a generic model to be able to test the level of optimization for the entire municipal area of Rotterdam. Two case study areas were selected, Rozenburg and Heijplaat, to test and train the model with a lower number of monitoring wells. A query is, however, if the methodology and model would be robust enough to handle external factors, such as construction works, that would possibly have an influence on groundwater levels locally. The reduction-optimization approach is only being able to function if the network continues in its current state (March 2024).
 
 
-How does reducing the number of monitoring wells contribute to the development of reconstruction errors? (When the n of wells is high, is the rmse also high? If the n is low, is the rmse also low? Low rmse means a higher level of optimization). 
-A clarification for a low RMSE when eliminating more monitoring wells from the study area are the following: 
-- Selection of relevant monitoring wells. If the algorithm effectively eliminates the least informative monitoring wells identifies and removes, the monitoring wells that have the most relevant informative content remain in the area. These monitoring wells are the most precise for the reconstruction of the groundwater levels. The remaining monitoring wells gives a representation of the underlying dynamics of the groundwater levels in the area.
-- Improved model performance. Through the removal of noise and redundant data, the model can be run more efficiently. Less variability in the dataset can lead to an improved generalization of the model, lowering the RMSE.
-- Optimization of the data set. The process of removing monitoring wells can lead to optimization of the data set, where only the most significant and informative details are used for model training. 
-- Prevent overestimating of the model. With a lower number of monitoring wells, the model prevents overestimating, because the model is being fitted to the training data. The forecasting accuracy of the model can be improved for the generation of new data. 
-- Quality over quantity.  A higher amount of data available is not necessary better. A small dataset with a higher quality data can lead to a better model performance than a big dataset with lots of noise and irrelevant information. 
-
-
-
-
-
-
-
-
-
-Manual measurements between 2014 and 2018 were executed by an external contracting company. The outliers in the manual measurements within this time period are probably the result of the work of  the contracting company. 
-
-- Ranking 
-The ranks are assigned a low number (essential well with high information content) to high number (most redundant well). Lower numbers mean a higher ranking concerning their information content and importance to reconstructing potentially removed redundant wells. 
-
-%- Ranking map 
-%Dark red = redundant/removed, minor loss in prediction accuracy 
-%Dark blue = essential information about the system 
-%- Important wells show flashiness, meaning high frequency, short-term changes 
-%- Wells with high seasonality have less recharge through stream infiltration leading to short-term variations or flashiness. 
-
-%- Python script is a decision-making tool.
-
-- Remove monitoring wells with low information content and equip monitoring wells with a higher ranking with a higher time frequency or quality sensors for example. However, as the number of wells increases, the accuracy improves on average, hydrographs are reproduced more consistently, and short-term peaks are reproduced more accurately. 
-
-%- Difference 1D and 2D methods: ranking based on 2D (spatially interpolated data) is different from ranking based on 1D (hydrograph data). This can be explained by the ranking reflecting the information content regarding the reconstruction with the lowest possible error. 
-
-%1D: goal is to reconstruct the hydrographs of removed wells.  
-%2D: goal is to reconstruct the interpolated surface. 
-
-- 2D reduction and extension based on gridded GWL maps is to ensure that existing wells remain. A gradual cost function can be used where the weighting increases with distance to the infrastructure or similar. Weighting depends on the system, basis, and cost function and must be adjusted to a specific case. 
-
-- Reconstruction of a large number of similar values is much easier for the model (around 400-500 wells), because there are more training patterns for each type of dynamics than with hydrographs alone. And the overall dynamics are reduced by interpolation with polishes the data spatially and temporally. 
-- Maximum Absolute Error: is a good focus because the identification of areas with high errors, where the model cannot produce reliable reconstructions and additional wells would bring more information. 
-
-QR Factorization
-%Hydrographs of the reconstructed/removed monitoring wells are developed. Every hydrograph explains the statistical variables: MAE, KGE, NSE, R2 (rsq), RMSE, rBIAS.
-
-%MAE = mean absolute error.
-%> The smaller the MAE, the better the performance. 
-%> 2D method appears to calculate smaller MAE's than 1D method.
-
-%KGE = Kling-Gupta efficiency. 
-%> Goodness of fit indicator for comparing simulations to observations. 
-%> A KGE value of -0.41 and higher indicates an improved model. 
-%- KGE = 1, perfect model correspondence. 
-%Source: \href{https://hess.copernicus.org/preprints/hess-2019-327/hess-2019-327.pdf}{hess-2019-327.pdf (copernicus.org)} 
-
-%NSE = Nash-Sutcliffe efficiency. 
-%> Similar to KGE, KGE visualizes the shortcomings of the NSE. 
-%- NSE = 1, perfect model correspondence. 
-%Source: \href{https://hess.copernicus.org/articles/27/1827/2023/hess-27-1827-2023.pdf}{hess-27-1827-2023.pdf (copernicus.org)} 
-
-%rBIAS = relative bias. 
-%> Optimal rBIAS is 0. Positive values = underestimation, negative values = overestimation of the bias. 
-
-%- Werkzaamheden bekijken en eventueel toevoegen aan de onderzoeksgebieden. 
- %- EVP in de tabel toevoegen: niet in de barplot. 
